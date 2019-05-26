@@ -5,8 +5,7 @@ class ContextWrapper extends React.Component {
     constructor(){
         super()
         this.state={
-            test: "test",
-            user: "",
+            user: "Brad",
             login: (name:string) => {
                 this.setState({user: name})
             }
