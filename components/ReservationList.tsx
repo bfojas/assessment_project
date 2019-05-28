@@ -1,12 +1,10 @@
 import React from 'react';
 import { Component } from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import { Query } from 'react-apollo';
+import {Platform, StyleSheet, Text, ScrollView} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import HomeScreen from './HomeScreen';
-import { GET_RESERVATIONS } from '../db/dbFunctions';
 import { StoreContext } from '../contextWrapper';
-import ReservationTiles from './ReservationTiles';
-
+import ReservationQuery from '../db/dbFunctions'
 
 
 class ReservationList extends Component {
@@ -15,24 +13,31 @@ class ReservationList extends Component {
     render(){
         return(
                 this.context.user.length ?
-                <View>
-                    <Text>List {this.context.user}</Text>
-                    <Query query={GET_RESERVATIONS} variables={{name:this.context.user}}>
-                            {({ loading, error, data})=>{
-                                if (loading) {return <Text>Loading...</Text>}
-                                if (error) {return <Text>Ooopsie poopsie {console.log(error)}</Text>}
-                                return (
-                                    <View>
-                                        {data.reservations.map((reservation, index)=><ReservationTiles {...reservation} key={index}/>)}
-                                    </View>
-                                )
-                            }}
-                    </Query>
-                </View>
-                : <HomeScreen/>
+                <LinearGradient colors={["#8e9eab", "#eef2f3"]} style={styles.gradient}>
+                    <ScrollView style={{flexGrow: 1}} contentContainerStyle={{...styles.container}}>
+                    <Text style={styles.user}>Reservations for {this.context.user}</Text>
+                    {ReservationQuery({name: this.context.user})}
+                    </ScrollView>
+                </LinearGradient>
+                : <HomeScreen/>// returns to login if not logged in
         )
     }
 }    
 
 export default ReservationList;
+
+const styles = StyleSheet.create({
+    gradient: {
+        flex: 1,
+    },
+    user: {
+        height: 45,
+        fontSize: 24,
+        textAlign: "center"
+    },
+    container: {
+    justifyContent: "space-around",
+    alignItems: "center"
+  },
+})
 

@@ -36,13 +36,13 @@ export default Button;
 
 const styles = StyleSheet.create({
     view: {
-        borderRadius: 10,
+        borderRadius: 5,
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#69d3eb"
     },
     text: {
-        fontSize: 30
+        fontSize: 24
     },
     disabled: {
         backgroundColor: "#bbbbb9"

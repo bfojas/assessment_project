@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { StyleSheet } from 'react-native';
 import DatePicker from 'react-native-datepicker';
  
 
@@ -9,7 +10,7 @@ const DateInput = props => {
   const {date, setDate, minDate, maxDate, placeHolder} = props
     return (
       <DatePicker
-        style={{width: "80%"}}
+        style={styles.date_input}
         date={date}
         mode="date"
         placeholder={placeHolder}
@@ -35,3 +36,10 @@ const DateInput = props => {
   }
 
 export default DateInput
+
+const styles= StyleSheet.create({
+  date_input: {
+    backgroundColor: "white",
+    width: "80%"
+}
+})

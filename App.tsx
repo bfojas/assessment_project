@@ -1,10 +1,10 @@
-import {createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from "./components/HomeScreen";
 import MakeReservation from "./components/MakeReservation";
 import ReservationList from "./components/ReservationList";
 
 
-
+const { width, height } = Dimensions.get("window");
 const App = createBottomTabNavigator(
   {
     // Home: {
@@ -16,23 +16,36 @@ const App = createBottomTabNavigator(
     Book: {
       screen: MakeReservation,
     },
-    Reservations: 
-      {screen: ReservationList},
+    Reservations:
+      { screen: ReservationList },
   },
   {
     tabBarOptions: {
-      inactiveBackgroundColor: "black",
-      activeBackgroundColor: "red",
-      style: {
-        borderTopEndRadius: 5
+      pressColor: "blue",
+      indicatorStyle: {
+        opacity: 0
       },
+      allowFontScaling: true,
+
+      upperCaseLabel: false,
+      showLabel: true,
+      activeTintColor: "blue",
       labelStyle: {
-        fontSize: 20,
-        lineHeight: 24,
+        fontSize: width * 0.022,
+        textAlign: "center"
+      },
+      showIcon: true,
+      style: {
+        // borderTopWidth: 0,
+        backgroundColor: "#221f1f",
+        tabBarButtonColor: "#000",
+        navBarTextFontSize: 34,
+        forceTitlesDisplay: true,
+        tabFontFamily: "Avenir-Medium"
       }
     },
-    
-}
+
+  }
 );
 
 

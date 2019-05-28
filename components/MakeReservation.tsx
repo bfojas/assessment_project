@@ -48,6 +48,7 @@ const MakeReservation = () => {
                 hotelName={hotelName} 
                 setHotelName={setHotelName}/>
             <DateInput 
+                style={styles.date_input}
                 minDate={minDate} 
                 maxDate={departureDate.length ? departureDate : maxDate} 
                 date={arrivalDate} 
@@ -85,7 +86,7 @@ const styles= StyleSheet.create({
         width: "90%",
         height: "60%",
         backgroundColor: "white",
-        borderRadius: 15,
+        borderRadius: 5,
         justifyContent: "space-around",
         alignItems: "center"
     }
