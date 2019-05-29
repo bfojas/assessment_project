@@ -5,6 +5,8 @@ import { Platform, StyleSheet, View, Picker } from 'react-native';
 
 const HotelInput = props => {
     const {hotelName, setHotelName} = props;
+
+    //list of hotels
     const hotels:string[] = ["Hilton 1", "Hilton 2", "Hilton 3"]
     const hotelMap = hotels.map((val, index)=> <Picker.Item label={val} value={val} key={index}/>)
 
@@ -14,7 +16,7 @@ const HotelInput = props => {
                 selectedValue={hotelName}
                 style={styles.picker}
                 onValueChange={(itemValue, itemIndex) =>
-                    setHotelName(itemValue)
+                    setHotelName("hotelName", itemValue)
                 }>
                 <Picker.Item label="Choose Hotel" value=""/>
                 {hotelMap}

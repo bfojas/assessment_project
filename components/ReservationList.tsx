@@ -4,7 +4,7 @@ import {Platform, StyleSheet, Text, ScrollView} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import HomeScreen from './HomeScreen';
 import { StoreContext } from '../contextWrapper';
-import ReservationQuery from '../db/dbFunctions'
+import { ReservationQuery } from '../db/dbFunctions'
 
 
 class ReservationList extends Component {
@@ -13,7 +13,7 @@ class ReservationList extends Component {
     render(){
         return(
                 this.context.user.length ?
-                <LinearGradient colors={["#8e9eab", "#eef2f3"]} style={styles.gradient}>
+                <LinearGradient colors={["#002C51", "#eef2f3"]} style={styles.gradient}>
                     <ScrollView style={{flexGrow: 1}} contentContainerStyle={{...styles.container}}>
                     <Text style={styles.user}>Reservations for {this.context.user}</Text>
                     {ReservationQuery({name: this.context.user})}
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     user: {
+        color: "white",
         height: 45,
         fontSize: 24,
         textAlign: "center"

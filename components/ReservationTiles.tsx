@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         position: "absolute",
         right: 0,
         height: 146,
-        width: 100,
+        width: 120,
         resizeMode: "cover",
         borderTopRightRadius: 5,
         borderBottomRightRadius: 5

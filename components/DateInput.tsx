@@ -7,7 +7,7 @@ import DatePicker from 'react-native-datepicker';
 
 
 const DateInput = props => {
-  const {date, setDate, minDate, maxDate, placeHolder} = props
+  const {date, setDate, minDate, maxDate, placeHolder, type} = props
     return (
       <DatePicker
         style={styles.date_input}
@@ -30,7 +30,7 @@ const DateInput = props => {
             marginLeft: 36
           }
         }}
-        onDateChange={(input: string) => setDate(input)}
+        onDateChange={(input: string) => setDate(type, input)}
       />
     )
   }

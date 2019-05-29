@@ -1,3 +1,5 @@
+//stylable button component
+
 import React from "react";
 import {
     Platform,

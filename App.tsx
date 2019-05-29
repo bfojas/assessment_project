@@ -4,15 +4,9 @@ import MakeReservation from "./components/MakeReservation";
 import ReservationList from "./components/ReservationList";
 
 
-const { width, height } = Dimensions.get("window");
+// const { width, height } = Dimensions.get("window");
 const App = createBottomTabNavigator(
   {
-    // Home: {
-    //   screen: HomeScreen,
-    //   navigationOptions: {
-    //     headerTitle: "HomeScreen"
-    //   }
-    // },
     Book: {
       screen: MakeReservation,
     },
@@ -29,17 +23,15 @@ const App = createBottomTabNavigator(
 
       upperCaseLabel: false,
       showLabel: true,
-      activeTintColor: "blue",
+      activeTintColor: "white",
+      activeBackgroundColor: "#002C51",
       labelStyle: {
-        fontSize: width * 0.022,
+        fontSize: 24,
         textAlign: "center"
       },
-      showIcon: true,
       style: {
-        // borderTopWidth: 0,
-        backgroundColor: "#221f1f",
-        tabBarButtonColor: "#000",
-        navBarTextFontSize: 34,
+        height: 50,
+        backgroundColor: "black",
         forceTitlesDisplay: true,
         tabFontFamily: "Avenir-Medium"
       }

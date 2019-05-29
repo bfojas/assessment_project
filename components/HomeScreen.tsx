@@ -31,7 +31,7 @@ class HomeScreen extends Component {
             <View style={styles.home_container}>
                 <ImageBackground source={require('../assets/hilton-background.jpg')} style={styles.background}>
                         <KeyboardAvoidingView keyboardVerticalOffset={keyboardVerticalOffset} behavior="position" style={styles.login_container}>
-                            <LinearGradient colors={["#8e9eab", "#eef2f3"]} style={styles.gradient}>
+                            <LinearGradient colors={["#002C51", "#eef2f3"]} style={styles.gradient}>
                                 <Text style={styles.welcome}>Sign In To Hilton</Text>
                                 <View style={styles.input_container}>
                                     <TextInput style={styles.input} onSubmitEditing={this.submit} placeholder="Username" selectTextOnFocus={true} value={this.state.name} keyboardType="default" onChangeText={(text) => this.handleInput(text)} onKeyPress={this.handleKeyDown} />
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     },
     welcome: {
         fontSize: 30,
+        color: "white",
         textShadowColor: 'rgba(0, 0, 0, 0.75)',
         textShadowOffset: { width: -1, height: 1 },
         textShadowRadius: 10

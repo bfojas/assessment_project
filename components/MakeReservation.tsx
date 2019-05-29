@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState, useContext } from 'react';
-import { Platform, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { Component } from 'react';
+import { Platform, StyleSheet, Text, View, ImageBackground, Button } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { ReservationMutation } from '../db/dbFunctions';
 import { StoreContext } from '../contextWrapper';
@@ -22,50 +22,68 @@ let minDate: string = `${mm}/${dd}/${yyyy}`;
 let maxDate: string = `${mm}/${dd}/${(parseInt(yyyy) + 1).toString()}`;
 
 // random generate id number
-const randomId: string = yyyy + mm + dd + today.getMilliseconds().toString() + (Math.floor(Math.random() * (99 + 10) + 10)).toString()
+export const randomId = () =>  yyyy + mm + dd + today.getMilliseconds().toString() + (Math.floor(Math.random() * (99 + 10) + 10)).toString()
 
 
-const MakeReservation = () => {
-    const context = useContext(StoreContext);
-    const [arrivalDate, setArrivalDate] = useState("");
-    const [departureDate, setDepartureDate] = useState("");
-    const [hotelName, setHotelName] = useState("")
+export class MakeReservation extends Component {
+    static contextType = StoreContext
+    
+    state={
+        id: "",
+        arrivalDate: "",
+        departureDate: "",
+        hotelName: ""        
+    } //reservation information
 
-    const reservationInput: object = {
-        id: randomId,
-        name: context.user,
-        arrivalDate,
-        departureDate,
-        hotelName
+    componentDidMount = () => {
+        this.setState({
+            id: randomId()
+        })
     }
 
+    handleInput = (name:string, value:string) => {
+        this.setState({[name]: value})
+    }
+    clearInput = () => {
+        this.setState({
+            id: randomId(),
+            arrivalDate: "",
+            departureDate: "",
+            hotelName: ""
+        })
+    }
+
+    render(){
+        const {arrivalDate, departureDate, hotelName} = this.state
     return (
-        context.user.length ? 
+        this.context.user && this.context.user.length ? 
         <View style={styles.reservation_container}>
             <ImageBackground source={require('../assets/hilton-background.jpg')} style={styles.background}>
-            <LinearGradient colors={["#8e9eab", "#eef2f3"]} style={styles.reservation_box}>
+            <LinearGradient colors={["#002C51", "#eef2f3"]} style={styles.reservation_box}>
             <HotelInput 
                 hotelName={hotelName} 
-                setHotelName={setHotelName}/>
+                setHotelName={this.handleInput}/>
             <DateInput 
-                style={styles.date_input}
+                type="arrivalDate"
                 minDate={minDate} 
                 maxDate={departureDate.length ? departureDate : maxDate} 
                 date={arrivalDate} 
-                setDate={setArrivalDate} 
+                setDate={this.handleInput} 
                 placeHolder="Arrival Date" />
             <DateInput 
+                type="departureDate"
                 minDate={arrivalDate.length ? arrivalDate : minDate}
                 maxDate={maxDate} 
                 date={departureDate} 
-                setDate={setDepartureDate} 
+                setDate={this.handleInput} 
                 placeHolder="Departure Date" />
-            {ReservationMutation(reservationInput)}
+            {ReservationMutation({...this.state, name: this.context.user}, this.clearInput)}
             </LinearGradient>
             </ImageBackground>
         </View>
         : <HomeScreen />
     )
+    }
 }
 
 export default MakeReservation;

@@ -2,12 +2,12 @@ import React from 'react';
 import { Text, StyleSheet } from 'react-native'
 import Button from '../components/Button'
 import gql from 'graphql-tag';
-import { Mutation } from 'react-apollo'
+import { Mutation, Query } from 'react-apollo'
 import ReservationTiles from '../components/ReservationTiles';
 
 const GET_RESERVATIONS = gql`
 query GET_RESERVATIONS($name: String!){
-    reservations(where: {name: $name}) {
+    reservations(where: {name: $name}, orderBy: arrivalDate_ASC) {
       hotelName
       id
       name
@@ -20,16 +20,16 @@ query GET_RESERVATIONS($name: String!){
 export const ReservationQuery = (queryInput) => {
   return (
     <Query query={GET_RESERVATIONS} variables={queryInput}>
-                            {({ loading, error, data})=>{
-                                if (loading) {return <Text>Loading...</Text>}
-                                if (error) {return <Text>Ooopsie poopsie {console.log(error)}</Text>}
-                                return (
-                                    <React.Fragment>
-                                        {data.reservations.map((reservation, index)=><ReservationTiles {...reservation} key={index}/>)}
-                                    </React.Fragment>
-                                )
-                            }}
-                    </Query>
+      {({ loading, error, data})=>{
+        if (loading) {return <Text>Loading...</Text>}
+        if (error) {return <Text>Ooopsie poopsie {console.log(error)}</Text>}
+        return (
+          <React.Fragment>
+              {data.reservations.map((reservation, index)=><ReservationTiles {...reservation} key={index}/>)}
+          </React.Fragment>
+        )
+      }}
+    </Query>
   )
 }
 
@@ -45,31 +45,33 @@ const MAKE_RESERVATION = gql`
   }
 `
 
-export const ReservationMutation = (reservationInput) => {
+export const ReservationMutation = (reservationInput, clearInput) => {
     const {name, arrivalDate, departureDate, hotelName} = reservationInput;
-
+    
+    //disables button
     let disabled:boolean = name.length && arrivalDate.length && departureDate.length && hotelName.length ? false : true
+    
     return (
-        <Mutation mutation={MAKE_RESERVATION}>
-            {(makeReservation, {loading, error}) => {
-                if (loading) {return <Text>Loading...</Text>}
-                if (error) {console.log('whoopsie', error)}
-                return (<Button style={styles.button}
-                    onPress={
-                        () => makeReservation({variables: {input: reservationInput}})
-                    }
-                    title="Reserve"
-                    disabled={disabled}
-                />)
-            }}
-        </Mutation>
+      <Mutation mutation={MAKE_RESERVATION}>
+          {(makeReservation, {loading, error}) => {
+              if (loading) {return <Text>Loading...</Text>}
+              if (error) {console.log('whoopsie', error)}
+              return (<Button style={styles.button}
+                onPress={() => makeReservation({variables: {input: reservationInput}})
+                  .then(() => clearInput())
+                }
+                  title="Reserve"
+                  disabled={disabled}
+              />)
+          }}
+      </Mutation>
     )
 }
 
 const styles = StyleSheet.create({
   button: {
     width: "50%",
-    height: "25%",
+    height: "15%",
     margin: 5
   }
 })
