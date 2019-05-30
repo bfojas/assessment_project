@@ -37,7 +37,7 @@ Installed the following modules:
 
 #### Working on It
 
-As a junior developer, I wasn't 100% familiar with all the technologies that I was being asked to use, but felt confident that I would be able to learn about them and put them all together. This was pretty fun. Learning can be a frustrating process at times, but the sense of reward from figuring things out always makes it worth it.
+I wasn't 100% familiar with all the technologies that I was being asked to use, but felt confident that I would be able to learn about them and put them all together. This was pretty fun. Learning can be a frustrating process at times, but the sense of reward from figuring things out always makes it worth it.
 
 ##### TypeScript
 I've never used TypeScript before, but was actually quite excited about it's implementation. It definitely forced me to think my code through more clearly.
@@ -45,7 +45,7 @@ I've never used TypeScript before, but was actually quite excited about it's imp
 ##### GraphQL
 I've sat through a GraphQL lecture before, but never used this either. Learning to understand the workings of this compared to REST APIs was neat. The GraphiQL interface was a lot more pleasant that normal API documentation once I got a handle of what was going on.
 
-A lot of the lessons that I saw had the queries and mutations inside the components that were using them, but I thought it made the components look too verbose, so I put them into a seperate file and imported them in. Not sure if this is the best practice way to do it, but would love to see how companies normally implement it.
+A lot of the lessons that I saw had the queries and mutations inside the components that were using them, but I thought it made the components look too verbose, so I put them into a seperate file and imported them in.
 
 ##### Jest/Enzyme
 I've used Jest before on Node backends, but had to get familiar with it on React Apps. Seemed pretty straight forward once the proper dependencies and Enzyme were set up. I only put 1 test suite in. Because of the simplicity of the app, I wasn't really sure what else I could test. Definitely need to look more into React testing. I had hooks in the MakeReservation component, but had to replace it with a class component for the sake of simplifying the tests.
