@@ -6,7 +6,7 @@ React-Native app for making and viewing reservations using the given GraphQL bac
 
 ### What's it Doing?
 
-We weren't required to do a login, but I wanted to just have something simple for the app to recognize the user, so I threw a input into the home screen. Once you pass the home screen, there are only two views, one for making reservations and one for viewing.
+It wasn't required to do a login, but I wanted to just have something simple for the app to recognize the user, so I threw a input into the home screen. Once you pass the home screen, there are only two views, one for making reservations and one for viewing.
 
 ![home screen](https://dev-fun-bucket.s3.amazonaws.com/login.png "Home screen")
 
@@ -48,7 +48,7 @@ I've sat through a GraphQL lecture before, but never used this either. Learning 
 A lot of the lessons that I saw had the queries and mutations inside the components that were using them, but I thought it made the components look too verbose, so I put them into a seperate file and imported them in. Not sure if this is the best practice way to do it, but would love to see how companies normally implement it.
 
 ##### Jest/Enzyme
-I've used Jest before on Node backends, but had to get familiar with it on React Apps. Seemed pretty straight forward once the proper dependencies and Enzyme were set up. I only put 1 test suite in. Because of the simplicity of the app, I wasn't really sure what else I could test. Definitely need to look more into React testing.  I had hooks in the MakeReservation component, but had to replace it with a class component for the sake of simplifying the tests.
+I've used Jest before on Node backends, but had to get familiar with it on React Apps. Seemed pretty straight forward once the proper dependencies and Enzyme were set up. I only put 1 test suite in. Because of the simplicity of the app, I wasn't really sure what else I could test. Definitely need to look more into React testing. I had hooks in the MakeReservation component, but had to replace it with a class component for the sake of simplifying the tests.
 
 ##### Context
 Normally I use Redux to pass global state around, but the instructions wanted something else, so I had to learn how to use React Context API. The only thing I had in the global state was the username, so I probably could have done it all with just prop-drilling (especially since the component tree isn't too deep), but it actually helped simplify the navigation.
