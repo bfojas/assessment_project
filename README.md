@@ -43,7 +43,7 @@ As a junior developer, I wasn't 100% familiar with all the technologies that I w
 I've never used TypeScript before, but was actually quite excited about it's implementation. It definitely forced me to think my code through more clearly.
 
 ##### GraphQL
-I've sat through a GraphQL lecture before, but never used this either. Learning to understand the workings of this compared to REST APIs was kinda fun. The GraphiQL interface was a lot more pleasant that normal API documentation once I got a handle of what was going on.
+I've sat through a GraphQL lecture before, but never used this either. Learning to understand the workings of this compared to REST APIs was neat. The GraphiQL interface was a lot more pleasant that normal API documentation once I got a handle of what was going on.
 
 A lot of the lessons that I saw had the queries and mutations inside the components that were using them, but I thought it made the components look too verbose, so I put them into a seperate file and imported them in. Not sure if this is the best practice way to do it, but would love to see how companies normally implement it.
 

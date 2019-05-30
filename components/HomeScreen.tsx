@@ -19,7 +19,7 @@ class HomeScreen extends Component {
         if (e.nativeEvent.key == "Enter") {
             this.submit();
         }
-    }
+    } //to submit when pressing enter
 
     submit = () => {
         this.context.login(this.state.name)
@@ -65,8 +65,6 @@ const styles = StyleSheet.create({
         top: "7%",
         height: "35%",
         width: "90%",
-        // justifyContent: "space-around",
-        // alignItems: "center",
         borderRadius: 5
     },
     gradient: {

@@ -22,7 +22,7 @@ const Button = props => {
                 <Text style={[{ ...styles.text, ...props.text_style }]}>
                     {props.title}
                 </Text>
-            </View>
+            </View> //disabled button
             :
             <Touchable onPress={() => props.onPress()}>
                 <LinearGradient colors={["#a7cfdf", "#23538a"]} style={[{ ...styles.view, ...props.style }]}>
@@ -30,7 +30,7 @@ const Button = props => {
                         {props.title}
                     </Text>
                 </LinearGradient>
-            </Touchable>
+            </Touchable> //abled button
     );
 };
 

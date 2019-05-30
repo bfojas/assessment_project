@@ -8,8 +8,6 @@ import DateInput from './DateInput';
 import HotelInput from './HotelInput';
 import HomeScreen from './HomeScreen';
 
-
-
 const today: object = new Date;
 let mm: string = (today.getMonth() + 1).toString();
 if (parseInt(mm) < 10) { mm = "0" + mm };
@@ -17,13 +15,12 @@ let dd: string = today.getDate().toString();
 if (parseInt(dd) < 10) { dd = "0" + dd };
 let yyyy: string = today.getFullYear().toString();
 
-// dates for date picker
+// dates for date picker ranges
 let minDate: string = `${mm}/${dd}/${yyyy}`;
 let maxDate: string = `${mm}/${dd}/${(parseInt(yyyy) + 1).toString()}`;
 
 // random generate id number
 export const randomId = () =>  yyyy + mm + dd + today.getMilliseconds().toString() + (Math.floor(Math.random() * (99 + 10) + 10)).toString()
-
 
 export class MakeReservation extends Component {
     static contextType = StoreContext
@@ -64,14 +61,14 @@ export class MakeReservation extends Component {
                 hotelName={hotelName} 
                 setHotelName={this.handleInput}/>
             <DateInput 
-                type="arrivalDate"
+                type="arrivalDate" //for handleInput()
                 minDate={minDate} 
                 maxDate={departureDate.length ? departureDate : maxDate} 
                 date={arrivalDate} 
                 setDate={this.handleInput} 
                 placeHolder="Arrival Date" />
             <DateInput 
-                type="departureDate"
+                type="departureDate" //for handleInput()
                 minDate={arrivalDate.length ? arrivalDate : minDate}
                 maxDate={maxDate} 
                 date={departureDate} 

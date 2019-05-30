@@ -4,7 +4,6 @@ import MakeReservation from "./components/MakeReservation";
 import ReservationList from "./components/ReservationList";
 
 
-// const { width, height } = Dimensions.get("window");
 const App = createBottomTabNavigator(
   {
     Book: {
@@ -20,7 +19,6 @@ const App = createBottomTabNavigator(
         opacity: 0
       },
       allowFontScaling: true,
-
       upperCaseLabel: false,
       showLabel: true,
       activeTintColor: "white",
@@ -36,7 +34,6 @@ const App = createBottomTabNavigator(
         tabFontFamily: "Avenir-Medium"
       }
     },
-
   }
 );
 
