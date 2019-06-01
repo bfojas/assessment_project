@@ -1,4 +1,4 @@
-## Assesment Project
+## Assessment Project
 
 ### Purpose
 
@@ -45,7 +45,7 @@ I've never used TypeScript before, but was actually quite excited about it's imp
 ##### GraphQL
 I've sat through a GraphQL lecture before, but never used this either. Learning to understand the workings of this compared to REST APIs was neat. The GraphiQL interface was a lot more pleasant that normal API documentation once I got a handle of what was going on.
 
-A lot of the lessons that I saw had the queries and mutations inside the components that were using them, but I thought it made the components look too verbose, so I put them into a seperate file and imported them in.
+A lot of the lessons that I saw had the queries and mutations inside the components that were using them, but I thought it made the components look too verbose, so I put them into a separate file and imported them in.
 
 ##### Jest/Enzyme
 I've used Jest before on Node backends, but had to get familiar with it on React Apps. Seemed pretty straight forward once the proper dependencies and Enzyme were set up. I only put 1 test suite in. Because of the simplicity of the app, I wasn't really sure what else I could test. Definitely need to look more into React testing. I had hooks in the MakeReservation component, but had to replace it with a class component for the sake of simplifying the tests.
